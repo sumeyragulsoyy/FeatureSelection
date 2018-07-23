@@ -9,9 +9,10 @@ def list_of_combs(arr):
         combs.extend(listing)
     return combs
 # x , file that has .csv extension
-#s, user given inconsistency rate that is less than      
-def func(x,s):
-    data = pd.read_csv('x') # get dataframe object
+#s, user given inconsistency rate that is less than  
+data = pd.read_csv('feature.csv')    
+def func(data,s):
+    #data = pd.read_csv(x) # get dataframe object
     columnIndex=data.shape[1] # column number of df object, feature number + class label
     
     feature_index=list(range(columnIndex-1)) #remove class label by -1
@@ -26,7 +27,7 @@ def func(x,s):
         #subset_size=df.shape[0] # row number
         class_labels=list(data.groupby(list(df))[list(data)[-1]].nunique()) # take category number each same row value
         label_num=list(data.groupby(list(df))[list(data)[-1]].value_counts()) # which one and how many?
-        for y in range(class_labels):
+        for y in range(len(class_labels)):
             if class_labels[y]>1:
                 set=label_num[y:label_num[y]+y]
                 inconsistency_num=sum(set)-max(set) # take different class labels 
@@ -39,7 +40,8 @@ def func(x,s):
     df = data.iloc[:,combs[selected_features_comb]]
     print(min_inconsistency_rate) # inconsistency rate
     return  list(df)     # list of selected fetures with column names   
+
                 
-            
+func(data,10)            
         
 
