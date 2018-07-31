@@ -18,8 +18,6 @@ public class featureSel {
             int[] indexes = x;//feature indexes and class variable(first index)
             ArrayList<Integer> classVariable = new ArrayList<>();
             ArrayList<String> featureSet = new ArrayList<>();
-            //places.add("Buenos Aires");
-
 
             try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
                 br.readLine();
@@ -35,22 +33,14 @@ public class featureSel {
 
                     }
                     featureSet.add(rows); // feature set concat as a string and added to string arraylist
-                    //System.out.println(columns[2] + " " + columns[3]);
 
                 }
-                //for (Integer n : classVariable ){
-                //    System.out.print(n+"  ");
-                //}
-                //System.out.println();
-                //for (String n : featureSet ){
-                //    System.out.print(n+ "  ");
-                //}
-
+                
             }
             catch (IOException e) {
                 e.printStackTrace();
             }
-            // map -> dataset
+
             Map<String, List<Integer>> dataset = new HashMap<>();
             List<Integer> labels = new ArrayList<>();
             labels.add(classVariable.get(0));
